@@ -4,12 +4,14 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem } from './actions';
 import { navyBlueColor, yellowColor } from './Colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const CustomButton = (props) => {
     const customStyles = props.style ? props.style : {}
     return (
-        <Button disabled={props.disabled} onPress={props.onPress} style={{ backgroundColor: navyBlueColor, ...customStyles }}>
-            <Text style={{ color: "#fff" }}>{props.value}</Text>
+        <Button disabled={props.disabled} onPress={props.onPress} style={{ backgroundColor: navyBlueColor, display: "flex", flexDirection: "row", ...customStyles }}>
+            {props.icon && <Icon name={props.icon} size={props.iconSize} color={props.iconColor} />}
+            <Text style={{ color: "#fff", marginLeft: props.icon ? 30 : 0 }}>{props.value}</Text>
         </Button>)
 }
 
